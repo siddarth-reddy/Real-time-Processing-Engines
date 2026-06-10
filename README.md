@@ -34,3 +34,12 @@ A table of clinical alerts with columns:
 - `alert_status` — CLINICAL ALERT (fired when avg HR > 100 bpm)
 
 ## Pipeline Architecture
+
+| Stage | Details |
+|-------|---------|
+| Source | CSV files via watched directory (`readStream`) |
+| Watermark | 2-minute event-time watermark on timestamp |
+| Window | Tumbling 2-minute window, grouped by `patient_id` |
+| Aggregation | `avg(heart_rate)` per window |
+| Alert Filter | `avg_heart_rate > 100 bpm` |
+| Sink | Memory sink → queried via `spark.sql()` |
