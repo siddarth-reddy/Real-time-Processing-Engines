@@ -44,5 +44,5 @@ A table of clinical alerts with columns:
 | Alert Filter | `avg_heart_rate > 100 bpm` |
 | Sink | Memory sink → queried via `spark.sql()` |
 
-![Alert Output](alert_output.png)
+![Alert Output](alert msg - 1.jpeg)
 
